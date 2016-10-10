@@ -32,13 +32,14 @@ function sendRequest() {
             var json = JSON.parse(this.responseText);
             var str = JSON.stringify(json,undefined,2);
             displayParameter(json);
-            getPrediction(i);
+
 
           //  document.getElementById("output").innerHTML += "<pre>" + str + "</pre>";
         }
     };
     //Clear the previous content
     document.getElementById("result").innerHTML = "";
+    document.getElementById("output").innerHTML = "";
     xhr.send(null);
 }
 
@@ -57,6 +58,7 @@ document.getElementById("result").innerHTML += "<tr><td>" + "Latitude"+"</td>"+"
 var weather = str[key];
 document.getElementById("result").innerHTML += "<tr><td>" + "visibility"+"</td>"+"<td>"+ weather[0].main +"</td>"+"</tr>";
 conditions = weather[0].main;
+getPrediction(conditions)
 }else if(key == "stations"){
 document.getElementById("result").innerHTML += "<tr><td>" + str[key] + "</td></tr>";
 }
@@ -77,7 +79,7 @@ var sunrise = convertTime(str[key].sunrise);
 document.getElementById("result").innerHTML += "<tr><td>" + "Sunrise"+"</td><td>"+  sunrise + "</td></tr>";
 //Time of sunset
 var sunset = convertTime(str[key].sunset);
-document.getElementById("result").innerHTML += "<tr><td>"+"Sunset"+"</td><td>"+sunset + "<td></tr>";
+document.getElementById("result").innerHTML += "<tr><td>"+"Sunset"+"</td><td>"+sunset + "</td></tr>";
 
 }else if(key == "name"){
 document.getElementById("result").innerHTML += "<tr><td>" + "City Name" +"</td><td>"+ str[key] + "</td></tr>";
@@ -85,18 +87,20 @@ document.getElementById("result").innerHTML += "<tr><td>" + "City Name" +"</td><
 
 }
 
-document.getElementById("result").innerHTML += "</table>";
 
 }
 
-function getPrediction(i){
+function getPrediction(conditions){
 
+  console.log(conditions);
   if(conditions == "Rain"){
-    document.getElementById("output").innerHTML += "<div id='out'+"+(i++)+">" + "Please bring the umbrella" + "</div>";
+    document.getElementById("output").innerHTML = "<tr><td>" + "Please bring the umbrella" + "</td></tr>";
   }else if(conditions == "Snow" ){
-    document.getElementById("output").innerHTML += "<div id='out'+"+(i++)+">" + "Please wear a coat" + "</div>";
+    document.getElementById("output").innerHTML = "<tr><td>" + "Please wear a coat" + "</td></tr>";
+  }else if(conditions == "Clear" ){
+    document.getElementById("output").innerHTML = "<tr><td>" + "Enjoy the weather !!!" + "</td></tr>";
   }else{
-    document.getElementById("output").innerHTML += "<div id='out'+"+(i++)+">" + "Its a pleasent day !" + "</div>";
+    document.getElementById("output").innerHTML = "<tr><td>" + "Its a pleasent day !" + "</td></tr>";
   }
 
 }
