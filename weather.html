@@ -1,5 +1,9 @@
 <!DOCTYPE html>
-<!-- Student Name:   -->
+<!-- Student Name:   Pratik Palashikar
+     Project Name: A Weather Web Application
+     Project Number: Project 1
+     Due Date : 19th October 2016
+-->
 <html lang="en">
   <head>
     <title>A Weather Web Application</title>
@@ -9,15 +13,12 @@
 th, td {
     border: 4px solid black;
 }
-
 #result{
   width: 100%;
 }
-
 #output{
   padding-top: 20px;
 }
-
 td{
   background-color: #007a99;
    color: white;
@@ -25,15 +26,13 @@ td{
 </style>
   </head>
   <body onload="initialize();">
-    <form>
+    <form align ="center">
        <label>City: <input type="text" id="form-input"/></label>
        <input type="button" onclick="sendRequest();" value="Display Info"/>
     </form>
-
     <br>
     <br>
     <table align="center"  id="result"></table>
-
     <table id="output"></table>
   </body>
 </html>
